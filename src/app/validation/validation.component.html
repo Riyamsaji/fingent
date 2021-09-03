@@ -1,1 +1,44 @@
-<p>validation works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="container-fluid section1">
+        <h1>{{heading}}</h1>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+               <img [src]="image">
+            </div>
+            <div class="col-lg-6">
+                <form [formGroup]="registerform" (ngSubmit)="submit()">
+                    <input type="text" placeholder="firstname" class="form-control" formControlName="firstname">
+                    <div *ngIf="(this.registerform.get('firstname')?.touched || this.registerform.get('firstname')?.dirty) &&this.registerform.get('firstname')?.errors"
+                        class="error">Invalid firstname</div>
+                    <input type="text" placeholder="email" class="form-control" formControlName="email">
+                    <div *ngIf="(this.registerform.get('email')?.touched || this.registerform.get('email')?.dirty) &&this.registerform.get('email')?.errors"
+                        class="error">Invalid email</div>
+
+                    <input type="text" placeholder="phone" class="form-control" formControlName="phone">
+                    <div *ngIf="(this.registerform.get('phone')?.touched || this.registerform.get('phone')?.dirty) &&this.registerform.get('phone')?.errors"
+                        class="error">Invalid phone</div>
+                    <button type="submit" class="btn btn-success btn1" (click)=submit()>SUBMIT</button>
+                </form>
+            </div>
+            
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
